@@ -11,5 +11,6 @@ def squares_by_loop(n):
 
 
 if __name__ == '__main__':
-    if squares_by_comp(2) != squares_by_loop(2):
+    number = 3
+    if squares_by_comp(number) != squares_by_loop(number):
         print('ERROR!')
