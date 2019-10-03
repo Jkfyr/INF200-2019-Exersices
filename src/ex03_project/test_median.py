@@ -5,6 +5,7 @@ __email__ = 'Jholmboe@nmbu.no'
 
 import pytest
 
+
 def median(data):
     """
     Returns median of data.
@@ -12,11 +13,12 @@ def median(data):
     :param data: An iterable of containing numbers
     :return: Median of data
     """
-    
+
     sdata = sorted(data)
     n = len(sdata)
-    return (sdata[n//2] if n % 2 == 1
-        else 0.5 * (sdata[n//2 - 1] + sdata[n//2]))
+    return (sdata[n // 2] if n % 2 == 1
+            else 0.5 * (sdata[n // 2 - 1] + sdata[n // 2]))
+
 
 # this code above is taken from this URL:
 # https://github.com/yngvem/INF200-2019-Exercises/blob/master/exersices/ex03.rst
@@ -39,10 +41,10 @@ def test_even_el():
 
 def test_ordered_el():
     data = [2, 5, 8, 4, 7, 9, 3]
-    orderd_data = median(sorted(data))
+    ordered_data = median(sorted(data))
     reversed_ord_data = median(list(reversed(data)))
     unordered_data = median(data)
-    assert orderd_data == median(data)
+    assert ordered_data == median(data)
     assert reversed_ord_data == median(data)
     assert unordered_data == median(data)
 
@@ -51,7 +53,6 @@ def test_empty_list():
     empty_list = []
     with pytest.raises(ValueError):
         median(empty_list)
-        pass
 
 
 def test_org_list():
@@ -61,5 +62,9 @@ def test_org_list():
     assert id(og_data) == id(data)
 
 
-    
-
+def test_tuple_list():
+    tuple_data = (2, 3, 4, 9, 5)
+    list_data = [2, 3, 4, 9, 5]
+    median_tuple = median(tuple_data)
+    median_data = median(list_data)
+    assert median_tuple == median_data
