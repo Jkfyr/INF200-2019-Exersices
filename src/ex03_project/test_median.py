@@ -3,6 +3,7 @@
 __author__ = 'Jens Kristian Holmboe'
 __email__ = 'Jholmboe@nmbu.no'
 
+import pytest
 
 def median(data):
     """
@@ -11,7 +12,7 @@ def median(data):
     :param data: An iterable of containing numbers
     :return: Median of data
     """
-
+    
     sdata = sorted(data)
     n = len(sdata)
     return (sdata[n//2] if n % 2 == 1
@@ -26,9 +27,39 @@ def test_one_element():
     assert median(data) == 7
 
 
-
-def test_odd_val():
+def test_odd_el():
     odd_data = [1, 3, 5, 7, 9]
     assert median(odd_data) == 5
 
+
+def test_even_el():
+    even_data = [4, 2, 8, 6, 10, 12]
+    assert median(even_data) == 7
+
+
+def test_ordered_el():
+    data = [2, 5, 8, 4, 7, 9, 3]
+    orderd_data = median(sorted(data))
+    reversed_ord_data = median(list(reversed(data)))
+    unordered_data = median(data)
+    assert orderd_data == median(data)
+    assert reversed_ord_data == median(data)
+    assert unordered_data == median(data)
+
+
+def test_empty_list():
+    empty_list = []
+    with pytest.raises(ValueError):
+        median(empty_list)
+        pass
+
+
+def test_org_list():
+    og_data = [3, 2, 1]
+    data = og_data
+    median(data)
+    assert id(og_data) == id(data)
+
+
+    
 
