@@ -22,7 +22,13 @@ def median(data):
 
 
 def test_one_element():
-    data = [5]
-    assert median(data) == 5
+    data = [7]
+    assert median(data) == 7
+
+
+
+def test_odd_val():
+    odd_data = [1, 3, 5, 7, 9]
+    assert median(odd_data) == 5
 
 
