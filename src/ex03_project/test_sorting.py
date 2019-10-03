@@ -12,7 +12,8 @@ def bubble_sort(input_data):
     for index in range(num_in_sorted_data):
         for num in range(0, num_in_sorted_data - index - 1):
             if sorted_data[num] > sorted_data[num + 1]:
-                sorted_data[num], sorted_data[num + 1] = sorted_data[num + 1], sorted_data[num]
+                sorted_data[num], sorted_data[num + 1] \
+                    = sorted_data[num + 1], sorted_data[num]
 
     return sorted_data
 
