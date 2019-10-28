@@ -18,7 +18,7 @@ class LCGRand:
 
 class ListRand:
     def __init__(self, liste):
-        self.list = liste
+        self.liste = liste
         self.list_len = len(liste)
         self.index = -1
 
@@ -26,4 +26,13 @@ class ListRand:
         self.index += 1
         if self.index >= self.list_len:
             raise RuntimeError()
-        return self.list[self.index]
+        return self.liste[self.index]
+
+
+if __name__ == "__main__":
+    list_num = ListRand([1, 2, 3])
+    print(list_num.rand())
+    print(list_num.rand())
+    rnd_generator = LCGRand(26)
+    print(rnd_generator.rand())
+    print(rnd_generator.rand())
