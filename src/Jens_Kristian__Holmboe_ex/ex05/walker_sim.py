@@ -128,21 +128,16 @@ class Simulation:
         for i in range(num_walks):
             walkers_steps.append(self.single_walk())
         return walkers_steps
-"""
+
+
 if __name__ == "__main__":
-    distance = [1, 2, 5, 10, 20, 50, 100]
-    tot_steps = [[] * i for i in range(len(distance))]
-    for i, el in enumerate(distance):
-        for k in range(0, 5):
-            stp = walk_home(0, el)
-            tot_steps[i].append(stp)
-        print("Distance:   {0:4d}  -> Path lengths: {1} ".format(el,
-                                                                 sorted(
-                                                                     tot_steps[
-                                                                         i])))
+    walk_sim_1 = Simulation(0, 10, 12345)
+    walk_sim_2 = Simulation(10, 0, 12345)
+    sim_walk_1 = Simulation(0, 10, 54321)
+    sim_walk_2 = Simulation(10, 0, 54321)
+    for i in range(2):
+        print(walk_sim_1.run_simulation(20))
+        print(walk_sim_2.run_simulation(20))
+    print(sim_walk_1.run_simulation(20))
+    print(sim_walk_2.run_simulation(20))
 
-"""
-
-w = Simulation(5, 0, 54321)
-a = w.run_simulation(4)
-print(a)
