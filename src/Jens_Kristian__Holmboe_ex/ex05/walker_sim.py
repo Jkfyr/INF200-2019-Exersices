@@ -105,8 +105,8 @@ class Simulation:
             walker.move()
             pos = walker.get_position()
             steps = walker.get_steps()
-            print(steps)
-            print("pos: {}".format(pos))
+            # print(steps)
+            # print("pos: {}".format(pos))
         return steps
 
     def run_simulation(self, num_walks):
@@ -123,7 +123,11 @@ class Simulation:
         list[int]
             List with the number of steps per walk
         """
-        self.single_walk()
+        walkers_steps = []
+        random.seed(self.seed)
+        for i in range(num_walks):
+            walkers_steps.append(self.single_walk())
+        return walkers_steps
 """
 if __name__ == "__main__":
     distance = [1, 2, 5, 10, 20, 50, 100]
@@ -139,5 +143,6 @@ if __name__ == "__main__":
 
 """
 
-w = Simulation(5, 0, 2)
-w.single_walk()
+w = Simulation(5, 0, 54321)
+a = w.run_simulation(4)
+print(a)
