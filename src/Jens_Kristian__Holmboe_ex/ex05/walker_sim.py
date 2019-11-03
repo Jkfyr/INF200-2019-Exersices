@@ -105,8 +105,6 @@ class Simulation:
             walker.move()
             pos = walker.get_position()
             steps = walker.get_steps()
-            # print(steps)
-            # print("pos: {}".format(pos))
         return steps
 
     def run_simulation(self, num_walks):
@@ -125,7 +123,7 @@ class Simulation:
         """
         walkers_steps = []
         random.seed(self.seed)
-        for i in range(num_walks):
+        for n in range(num_walks):
             walkers_steps.append(self.single_walk())
         return walkers_steps
 
@@ -140,4 +138,3 @@ if __name__ == "__main__":
         print(walk_sim_2.run_simulation(20))
     print(sim_walk_1.run_simulation(20))
     print(sim_walk_2.run_simulation(20))
-
