@@ -71,15 +71,9 @@ class BoundedSimulation(Simulation):
         return b_walker.get_steps()
 
 
-if __name__ == "__main__":
-    cond1 = BoundedSimulation(0, 20, 12345, 0, 20)
-    cond2 = BoundedSimulation(0, 20, 12345, -10, 20)
-    cond3 = BoundedSimulation(0, 20, 12345, -100, 20)
-    cond4 = BoundedSimulation(0, 20, 12345, -1000, 20)
-    cond5 = BoundedSimulation(0, 20, 12345, -10000, 20)
-
-    print(cond1.run_simulation(20))
-    print(cond2.run_simulation(20))
-    print(cond3.run_simulation(20))
-    print(cond4.run_simulation(20))
-    print(cond5.run_simulation(20))
+if __name__ == '__main__':
+    for left_bound in [0, -10, -100, -1000, -10000]:
+        steps = BoundedSimulation(0, 20, seed=12345,
+                                  left_limit=left_bound,
+                                  right_limit=20).run_simulation(20)
+        print("left boundary: {:8d}: {}".format(left_bound, steps))
